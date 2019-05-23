@@ -1,0 +1,86 @@
+<div class="content">
+
+    <nav class="navbar navbar-default navbar-custom" aria-label="Page navigation" style="max-width: 100% ;">
+        <div class="container-fluid" id="mobile_navbar">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile_withdraw">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="mobile_withdraw">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{URL}withdraw_steam/{APPID}/ascending/{SEARCH}/{PAGE}"><!-- IF ( '{SORT}' === 'ascending' ) [sort1]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [sort1] -->Price ascending</a>
+                            </li>
+                            <li>
+                                <a href="{URL}withdraw_steam/{APPID}/descending/{SEARCH}/{PAGE}"><!-- IF ( '{SORT}' === 'descending' ) [sort2]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [sort2] --> Price descending</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{URL}withdraw_steam/{APPID}/A-Z/{SEARCH}/{PAGE}"><!-- IF ( '{SORT}' === 'A-Z' ) [sort3]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [sort3] --> A-Z</a>
+                            </li>
+                            <li>
+                                <a href="{URL}withdraw_steam/{APPID}/Z-A/{SEARCH}/{PAGE}"><!-- IF ( '{SORT}' === 'Z-A' ) [sort4]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [sort4] --> Z-A</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{URL}withdraw_steam/all/{SORT}/{SEARCH}/{PAGE}"><!-- IF ( '{APPID}' === 'all' ) [appid1]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [appid1] --> All</a>
+                            </li>
+
+                            <li>
+                                <a href="{URL}withdraw_steam/items/{SORT}/{SEARCH}/{PAGE}"><!-- IF ( '{APPID}' === 'items' ) [appid4]--><span class="glyphicon glyphicon-ok"></span><!-- END_IF [appid4] --> Items</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{URL}withdraw_steam/all/descending/none/{PAGE}">Clear sort</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <form class="navbar-form navbar-left" id="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" id="serach_text">
+                    </div>
+                    <button type="submit" class="btn btn-default" style="background: #2a3849 ;color: #fff ;border: none ;">Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        <a class="disabled" id="cart_price">{USER_CART_PRICE}/{USER_INFORMATION}[coins] LEI</a>
+                    </li>
+                    <li>
+                        <div id="items_count">{USER_ITEMS_CART}</div>
+                        <a style="padding: 10px ;padding-right: 40px ;margin: 0 ;" class="cart_items"><img id="cart" /></a>
+                    </li>
+
+
+                </ul>
+                <ul class="pagination" style="margin: 7px ;">
+                    {PAGINATE}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="cart_show"></div>
+
+    <div class="withdraw_container">
+        <!-- FOREACH ( [INVENTORY] ) (KEY AS VALUE) [inv] [tree] -->
+
+        <div class="inline-block item_contariner clear">
+            <img class="add_item block" style="height: 150px ;margin: 0 auto ;" appid="[VALUE](appid)" item_id="[VALUE](classid)" item_name="[VALUE](name)" src="[VALUE](image)"/>
+            <span style="color: #[VALUE](name_color) ;">[VALUE](name)</span>
+            <span class="block">[VALUE](exterior)</span>
+            <span class="block">[VALUE](price) LEI</span>
+        </div>
+        <!-- END_FOREACH [inv] -->
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>

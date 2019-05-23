@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>{TITLE}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="shortcut icon" type="image/png" href="{REAL_URL}template/styles/images/favicon.ico"/>
+		<meta name="google-signin-client_id" content="23509325499-ltog0t8f81kaipqsn898rojqt1h3h4g5.apps.googleusercontent.com ">
+
+		{STYLES}
+		{JAVASCRIPTS}
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+		<script>
+			var BOARD_AJAX = '{URL}xmlhttprequest' ;
+			var BOARD_URL = '{URL}' ;
+			var USER_LOGGED = '{USER_LOGGED}' ;
+
+
+		</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107674713-1"></script>
+
+
+	</head>
+
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile_navbar">
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		        		<span class="icon-bar"></span>
+		      		</button>
+		      		<a class="navbar-lef" href="{URL}"><img src="{REAL_URL}template/styles/images/logo250x250.png" id="logo" /></a>
+		    	</div>
+		    	<div class="collapse navbar-collapse" id="mobile_navbar">
+			      	<ul class="nav navbar-nav navbar-right">
+
+			      		<li><a href="{URL}support">Cum comanzi?</a></li>
+
+			      		<!-- IF ( {USER_LOGGED} == 1 ) [logged] -->
+			        	<li><a href="{URL}withdraw">Produse</a></li>
+			        	<li><a href="{URL}signout">Sign out</a></li>
+			        	<li class="userinfo">
+							<div class="inline-block"><a href="{URL}user/{USER_INFORMATION}[openid]"><img src="{USER_INFORMATION}[avatar_medium]" class="imageheader" /></a></div>
+							<div class="usertext inline-block">
+								<a style="padding: initial ;color: #000;" href="{URL}user/{USER_INFORMATION}[openid]">{USER_INFORMATION}[personaname]</a><br/>
+								<var>
+								<!-- IF ( {USER_INFORMATION}[coins] == 0 ) [coins_check] -->
+
+										Nu ai bani pe cont
+								<!-- ELSE [coins_check] -->
+									{USER_INFORMATION}[coins] LEI
+								<!-- END_IF [coins_check] -->
+								</var>
+							</div>
+						</li>
+			        	<!-- ELSE [logged] -->
+
+
+						<li class="userlogin">
+							<form action="{REAL_URL}internal/register_google.php" method="post">
+								<input type="submit" id="google_logon" name="submit" value="">
+							</form>
+
+
+						</li>
+			        	<!-- END_IF [logged] -->
+			      	</ul>
+		    	</div>
+		  	</div>
+		</nav>
+		<div class="container-fluid text-center" style="padding: 0 ;margin: 0 ;min-height: calc(100% - 50px) ;" >
